@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package math;
+option go_package = "./;pb";
+
+service MathService {
+    rpc Add(MathRequest) returns (MathResponse) {}
+}
+
+message MathRequest {
+    float num_a = 1;
+    float num_b = 2;
+}
+
+message MathResponse {
+    float result = 1;
+}

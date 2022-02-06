@@ -1,0 +1,18 @@
+version: '3'
+services:
+  proto:
+    command: ./proto/scripts/protoc.sh
+    build:
+      context: proto
+    volumes:
+      - .:/proto
+  server:
+    command: ./scripts/init.sh
+    build:
+      context: server
+    volumes:
+      - ./server:/grpc-server
+    ports:
+      - "50051:50051"
+    depends_on:
+      - proto
